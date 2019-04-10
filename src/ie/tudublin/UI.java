@@ -9,18 +9,21 @@ import processing.data.TableRow;
 
 public class UI extends PApplet
 
-{	
-	ArrayList<UI> colors = new ArrayList<UI>();
-
-	Resist r;
+{
+	Resistor r;
 	Colour c; 
-	
+	public float h;
+	public float t;
+	public float o; 
 	
 	public void separate(int value)
 	{
 		int hundreds = (value / 100);
+		h = hundreds; 
 		int tens = (value - (hundreds * 100)) / 10;
+		t = tens;
 		int ones = value - ((hundreds * 100)  + (tens * 10));
+		o = ones;
 		print(hundreds + ",");
 		print(tens + ",");
 		println(ones);
@@ -29,26 +32,18 @@ public class UI extends PApplet
 	public void settings()
 	{
 		size(500, 800);
+		background(80,80,80);
 		separate(381);
 		separate(1);
 		separate(92);
 		
 	}
-	void loadColors()
-    {
-        Table table = loadTable("Colours.csv", "header");
-        for(TableRow tr:table.rows())
-        {
-            UI c = new UI(tr);
-            colors.add(c);
-		}        
-    }
+	
 
 	public void setup() 
 	{
-		loadColors();
 		c = new Col(ones, tens, hundreds);
-		r = new Reist(this); 
+		r = new Resist(this); 
 	}
 	
 	public void draw()
