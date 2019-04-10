@@ -15,6 +15,7 @@ public class UI extends PApplet
 	public float h;
 	public float t;
 	public float o; 
+	ArrayList<Colour> colours = new ArrayList<Colour>();
 	
 	public void separate(int value)
 	{
@@ -38,12 +39,28 @@ public class UI extends PApplet
 		separate(92);
 		
 	}
+	void loadColours()
+    {
+        Table table = loadTable("colours.csv", "header");
+        for(TableRow tr:table.rows())
+        {
+            Colour c = new Colour(tr);
+            colours.add(c);
+        }        
+	}
+	void printscolours(){
+		for(int i=0; i<55; i++)
+		{
+			Colour c = colours.get(i);
+			println(c.getName()); 
+		}
+	}
 	
 
 	public void setup() 
 	{
 		c = new Col(ones, tens, hundreds);
-		r = new Resist(this); 
+		r = new resistor(this); 
 	}
 	
 	public void draw()
