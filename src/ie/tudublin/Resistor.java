@@ -1,6 +1,6 @@
 package ie.tudublin;
 
-public class Resist 
+public class Resistor
 {
     UI ui;
     private float r;
@@ -8,7 +8,7 @@ public class Resist
     private float b; 
 
 
-    public void Resist(ui, float r, float g, float b)
+    public void resistor(ui, float r, float g, float b)
     {
         this.ui = ui; 
         this.r = r;
@@ -17,18 +17,19 @@ public class Resist
     }
     public void render(){
 
-        //box1
-        ui.rect(200, 600, 400, 30);
-        //first color
-        ui.fill(r ,g, b);
-        ui.line(220, 600, 10, 10);
-        //second color
-        ui.fill(r ,g, b);
-        ui.line(220, 600, 10, 10);
-        //third color
-        ui.fill(r ,g, b);
-        ui.line(220, 600, 10, 10);
+        int border = 50; 
 
+        //box1
+        ui.rect(200, border, 100, 50);
+        //2nd box
+        ui.fill(r ,g, b);
+        ui.rect(220, 50+(border*2), 10, 10);
+        //3rd box
+        ui.fill(r ,g, b);
+        ui.rect(220, 50+(border*3), 10, 10);
+        //4th box
+        ui.fill(r ,g, b);
+        ui.rect(220, 50+(border*4), 10, 10);
     }
 
 
